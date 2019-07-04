@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
 import { addMessage } from "../actions/index";
-function mapDispatchToProps(dispatch) {
+ function mapDispatchToProps(dispatch) {
   return {
-    addMessage: message => dispatch(addMessage(message))
-  };
+    addMessage: message => dispatch(addMessage(message)),
+   };
 }
 class ConnectedForm extends Component {
   constructor() {
     super();
     this.state = {
-      message: ""
-    };
+      message: "",
+     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -22,13 +22,15 @@ class ConnectedForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { message } = this.state;
+    const {author} = this.state;
     const id = uuidv1();
     this.props.addMessage({ message, id });
     this.setState({ message: "" });
+
   }
   render() {
     const { message } = this.state;
-    return (
+     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
            <input
@@ -36,7 +38,9 @@ class ConnectedForm extends Component {
             className="form-control"
             id="message"
             value={message}
+            required
             onChange={this.handleChange}
+            placeholder="Message"
           />
         </div>
         <button type="submit" className="btn btn-success btn-lg">
