@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
-import { addArticle } from "../actions/index";
+import { addMessage } from "../actions/index";
 function mapDispatchToProps(dispatch) {
   return {
-    addArticle: article => dispatch(addArticle(article))
+    addMessage: message => dispatch(addMessage(message))
   };
 }
 class ConnectedForm extends Component {
   constructor() {
     super();
     this.state = {
-      title: ""
+      message: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,27 +21,26 @@ class ConnectedForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { title } = this.state;
+    const { message } = this.state;
     const id = uuidv1();
-    this.props.addArticle({ title, id });
-    this.setState({ title: "" });
+    this.props.addMessage({ message, id });
+    this.setState({ message: "" });
   }
   render() {
-    const { title } = this.state;
+    const { message } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="title">Title</label>
-          <input
+           <input
             type="text"
             className="form-control"
-            id="title"
-            value={title}
+            id="message"
+            value={message}
             onChange={this.handleChange}
           />
         </div>
         <button type="submit" className="btn btn-success btn-lg">
-          SAVE
+          Send Message
         </button>
       </form>
     );

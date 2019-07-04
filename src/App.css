@@ -11,7 +11,7 @@
 .container{
   text-align: center;
   align-items: center;
-  
+
 }
 
 .App-header {
@@ -37,3 +37,29 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+.topdiv {
+  clear:both;
+  position:fixed;
+  top:0;
+  height:50%;
+  width:100%;
+  font-size:16px;
+  text-align:center;
+  border: 1px solid grey;
+ }
+.bottomdiv {
+  clear:both;
+  position:fixed;
+  bottom:0;
+  height:50%;
+  width:100%;
+  font-size:16px;
+  text-align:center;
+ }

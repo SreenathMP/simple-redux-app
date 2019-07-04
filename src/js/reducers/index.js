@@ -1,16 +1,16 @@
 //Reducers produce the state of the application
 //State is changed by dispatching an application
-import {ADD_ARTICLE} from "../constants/action-types"
+import {ADD_MESSAGE} from "../constants/action-types"
 
 
 const initialState = {
-  articles: []
+  messages: []
 };
 
 function rootReducer(state=initialState,action){
-  if(action.type === ADD_ARTICLE){
+  if(action.type === ADD_MESSAGE){
     return Object.assign({},state,{
-      articles:state.articles.concat(action.payload)
+      messages:state.messages.concat(action.payload)
     });
    }
   return state;

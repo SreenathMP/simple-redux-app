@@ -1,5 +1,5 @@
-import {ADD_ARTICLE} from "../constants/action-types"
+import {ADD_MESSAGE} from "../constants/action-types"
 
-export function addArticle(payload) {
-  return {type: ADD_ARTICLE,payload}
+export function addMessage(payload) {
+  return {type: ADD_MESSAGE,payload}
 };
