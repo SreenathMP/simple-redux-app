@@ -13,13 +13,13 @@ class App extends React.Component {
    }
 
    handleMessage=()=>{
-     this.props.addMessage({message:"Hi",author:"User 1"})
+     this.props.addMessage({group_index: 0, message:"Hi",author:"User 1"})
     }
 
   render () {
    return (  <div>
         <div className="container-fluid ">
-      <main>  <div><List/></div>
+      <main>  <div><List messages={this.props.messages}/></div>
          <button className="btn btn-danger btn-space" onClick={this.handleSubmit}>Add User</button>
           <button className="btn btn-danger btn-space" onClick={this.handleMessage}>Add Message</button></main>
        </div>
@@ -31,7 +31,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages.message
+    messages: state.messages
   }
 }
 

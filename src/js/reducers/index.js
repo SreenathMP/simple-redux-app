@@ -5,7 +5,7 @@ import {
 
 
 const initialState = {
-  messages:{
+  messages:[{
     property_id: 12,
     members: [
       "User 1",
@@ -24,17 +24,39 @@ const initialState = {
         author: "User 3"
       },
     ]
+  },
+  {
+    property_id: 30,
+    members: [
+      "User 11",
+      "User 22"
+    ],
+    message: [{
+        message: "Was Gehts",
+        author: "User 11"
+      },
+
+      {
+        message: " Bis Gleich",
+        author: "User 22"
+      },
+      {
+        message: "Machen",
+        author: "User 3"
+      },
+    ]
   }
+]
 };
 
 function rootReducer(state = initialState, action) {
   if (action.type === ADD_MESSAGE) {
-    console.log(action.messages);
-
     return {
       ...state,
-      messages:{...state.messages,
-      message:[...state.messages.message, action.newMessage]}
+      messages:[...state.messages[action.group_index],
+        {...state.messages[action.group_index],
+          message:[...state.messages.message, action.newMessage]}
+        ]
     }
   }
   if(action.type === ADD_AUTHOR){
