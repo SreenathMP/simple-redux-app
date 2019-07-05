@@ -12,21 +12,21 @@ class App extends React.Component {
   render () {
    return (  <div>
         <div className="container-fluid">
-        <div><List messages={this.props.messages}/></div>
-         <button className="btn-red" onClick={this.handleSubmit}>Add User</button>
-      </div>
+        <div><List/></div>
+         <button className="btn btn-danger" onClick={this.handleSubmit}>Add User</button>
+       </div>
     </div>)
   }
 }
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messages: state.message
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addAuthor:(userName) => {
       dispatch(addAuthor(userName))
