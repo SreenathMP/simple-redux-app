@@ -8,31 +8,35 @@ const initialState = {
   messages:{
     property_id: 12,
     members: [
-      "user1",
-      "user2"
+      "User 1",
+      "User 2"
     ],
     message: [{
-        message: "Hello",
-        author: "user1"
+        message: " Hello",
+        author: "User 1"
       },
       {
-        message: "How are you",
-        author: "user2"
+        message: " How are you",
+        author: "User 2"
       },
       {
-        message: "Whats going on",
-        author: "user3"
+        message: " Whats going on",
+        author: "User 3"
       },
     ]
   }
 };
 
 function rootReducer(state = initialState, action) {
-  // if (action.type === ADD_MESSAGE) {
-  //   return Object.assign({}, state, {
-  //     messages: state.messages.concat(action.payload)
-  //   });
-  // }
+  if (action.type === ADD_MESSAGE) {
+    console.log(action.messages);
+
+    return {
+      ...state,
+      messages:{...state.messages,
+      message:[...state.messages.message, action.newMessage]}
+    }
+  }
   if(action.type === ADD_AUTHOR){
     return Object.assign({},state,{
       messages: {...state.messages,members:[...state.messages.members,action.userName]}

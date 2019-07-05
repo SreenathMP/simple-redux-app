@@ -1,7 +1,7 @@
 import {ADD_MESSAGE,ADD_AUTHOR} from "../constants/action-types"
 
-export function addMessage(addMessage) {
-  return {type: ADD_MESSAGE, addMessage}
+export function addMessage(newMessage) {
+  return {type: ADD_MESSAGE, newMessage}
 };
 
 export function addAuthor(userName){
