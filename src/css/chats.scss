@@ -1,5 +1,10 @@
 $blue: #74b9ff;
-
+main {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  margin-top: 10%;
+}
 body {
   background-color: #E4E9FD;
 background-image: -webkit-linear-gradient(5deg, #24C6DC 5%, #514A9D 50%);
@@ -21,7 +26,7 @@ background-image: -webkit-linear-gradient(5deg, #24C6DC 5%, #514A9D 50%);
   padding: 10px 15px;
   border-radius: 7px;
   width: 170%;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
 
 
   .no-gutters {
@@ -90,7 +95,8 @@ input {
   }
 
   .btn-space{
-    margin:50%;
+    margin:15px;
+    padding-right: 10px;
   }
 
   h2{
@@ -184,7 +190,6 @@ hr {
 .offset-md-9 {
   .chat-bubble {
     background: $blue;
-    color: #fff;
   }
 }
 

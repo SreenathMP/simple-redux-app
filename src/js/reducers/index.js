@@ -20,8 +20,8 @@ const initialState = {
         author: "User 2"
       },
       {
-        message: " Not nows",
-        author: "User 3"
+        message: " Not now",
+        author: "User 1"
       },
     ]
   },
@@ -42,7 +42,7 @@ const initialState = {
       },
       {
         message: "Machen",
-        author: "User 3"
+        author: "User 11"
       },
     ]
   },
@@ -59,11 +59,11 @@ const initialState = {
 
       {
         message: " Bis Spater",
-        author: "User 5"
+        author: "User 102"
       },
       {
         message: "Gluckwunsch",
-        author: "User 9"
+        author: "User 96"
       },
     ]
   },
@@ -75,16 +75,16 @@ const initialState = {
     ],
     message: [{
         message: "Bis Morgen",
-        author: "User 11"
+        author: "User 400"
       },
 
       {
         message: " Kebab",
-        author: "User 56"
+        author: "User 500"
       },
       {
         message: "Machen",
-        author: "User 3"
+        author: "User 400"
       },
     ]
   },
