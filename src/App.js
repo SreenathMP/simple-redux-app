@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import {addAuthor} from './js/actions/index'
 import {addMessage} from './js/actions/index'
-import Chat from './js/components/chat'
+
+
 
 class App extends React.Component {
   handleSubmit=()=>{
@@ -17,14 +18,16 @@ class App extends React.Component {
     }
 
   render () {
-   return (  <div>
-        <div className="container-fluid ">
-      <main>  <div><List messages={this.props.messages}/></div>
-         <button className="btn btn-danger btn-space" onClick={this.handleSubmit}>Add User</button>
-          <button className="btn btn-danger btn-space" onClick={this.handleMessage}>Add Message</button></main>
-       </div>
-       <main><Chat /></main>
-    </div>)
+   return (
+     <div>
+
+<main><div><List messages={this.props.messages}/></div></main>
+
+    {/* <button className="btn btn-danger btn-space" onClick={this.handleSubmit}>Add User</button>
+    <button className="btn btn-danger btn-space" onClick={this.handleMessage}>Add Message</button> */}
+      </div>
+
+   )
   }
 }
 
