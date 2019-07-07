@@ -1,4 +1,5 @@
 $blue: #74b9ff;
+
 main {
   display: flex;
   align-items: center;
@@ -6,26 +7,25 @@ main {
   margin-top: 10%;
 }
 body {
-  background-color: #E4E9FD;
-background-image: -webkit-linear-gradient(5deg, #24C6DC 5%, #514A9D 50%);
+ background-image: -webkit-linear-gradient(5deg, #24C6DC 5%, #514A9D 50%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 .container {
-  margin: 30px 20px;
+  margin: 2px 5px;
   background: #fff;
-  padding: 10px;
+  padding: 1px;
   border-radius: 7px;
-}
+ }
 
 
 .settings-tray {
   background: #eee;
   padding: 10px 15px;
   border-radius: 7px;
-  width: 170%;
+  width: 173%;
   padding-bottom: 25px;
 
 
@@ -84,20 +84,17 @@ input {
 }
 
 .friend-drawer {
-  padding: 10px 15px;
+  padding: 25px 2px;
   display: flex;
   vertical-align: baseline;
   background: #fff;
   transition: .3s ease;
 
+
   &--grey {
     background: #eee;
   }
 
-  .btn-space{
-    margin:15px;
-    padding-right: 10px;
-  }
 
   h2{
     display: flex;
@@ -201,12 +198,12 @@ hr {
   align-items: center;
   margin-top: 19px;
   bottom: 0;
-  width: 170%;
+  width: 173%;
 
   input {
     margin: 0 10px;
     padding: 6px 2px;
-    width: 60%;
+    width: 85%;
   }
 
   i {

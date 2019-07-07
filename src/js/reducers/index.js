@@ -1,7 +1,4 @@
-import {
-  ADD_MESSAGE,
-  ADD_AUTHOR
-} from "../constants/action-types"
+import { ADD_MESSAGE, ADD_AUTHOR } from "../constants/action-type";
 
 
 const initialState = {
@@ -135,19 +132,28 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   if (action.type === ADD_MESSAGE) {
-    return {
-      ...state,
-      messages:[...state.messages[action.group_index],
-        {...state.messages[action.group_index],
-          message:[...state.messages.message, action.newMessage]}
-        ]
-    }
+    var id1 = action.payload.id;
+    var newstate1 = { ...state };
+    newstate1.messages.find(el => el.property_id === id1).message = [
+      ...newstate1.messages.find(el => el.property_id === id1).message,
+      { message: action.payload.newmessage, author: action.payload.author }
+    ];
+    return Object.assign({}, state, {
+      messages: [...newstate1.messages]
+    });
   }
-  if(action.type === ADD_AUTHOR){
-    return Object.assign({},state,{
-      messages: {...state.messages,members:[...state.messages.members,action.userName]}
-    })
+  if (action.type === ADD_AUTHOR) {
+    var id = action.payload.id;
+    var newstate = { ...state };
+    newstate.messages.find(el => el.property_id === id).members = [
+      ...newstate.messages.find(el => el.property_id === id).members,
+      action.payload.userName
+    ];
+    return Object.assign({}, state, {
+      messages: [...newstate.messages]
+    });
   }
+
   return state;
 }
 
