@@ -22,11 +22,16 @@ body {
 
 
 .settings-tray {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #eee;
   padding: 10px 15px;
   border-radius: 7px;
-  width: 173%;
+  width: 200%;
   padding-bottom: 25px;
+  margin-left:15px;
 
 
   .no-gutters {
@@ -35,8 +40,11 @@ body {
 
   &--right {
     float: right;
+  
 
     i {
+      
+      
       margin-top: 10px;
       font-size: 25px;
       color: grey;
@@ -191,6 +199,7 @@ hr {
 }
 
 .chat-box-tray {
+  margin-left: 20px;
   background: #eee;
   display: flex;
   align-items: baseline;
@@ -198,12 +207,13 @@ hr {
   align-items: center;
   margin-top: 19px;
   bottom: 0;
-  width: 173%;
+  width: 200%;
 
   input {
     margin: 0 10px;
     padding: 6px 2px;
     width: 85%;
+    text-align: center;
   }
 
   i {
