@@ -4,6 +4,7 @@ import FormDialog from "./FormDialog";
 import { connect } from "react-redux";
 import { addAuthor } from "../actions/index";
 import { addMessage } from "../actions/index";
+import { addGroup } from "../actions/index";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import GroupAddOutlinedIcon from "@material-ui/icons/GroupAddOutlined";
 
@@ -25,14 +26,19 @@ class List extends React.Component {
 
   handleClick(index) {
     this.setState({ index: index });
+    this.setState({
+      user: ""
+    });
   }
 
   handleMessage = () => {
-    this.props.addMessage({
-      id: this.state.index,
-      newmessage: this.state.message,
-      author: this.state.user
-    });
+    if (this.state.user !== "") {
+      this.props.addMessage({
+        id: this.state.index,
+        newmessage: this.state.message,
+        author: this.state.user
+      });
+    }
   };
 
   handleUser = () => {
@@ -42,11 +48,18 @@ class List extends React.Component {
     });
   };
 
-  formsave = value => {
-    console.log(value);
+  handleGroup = () => {
+    this.setState({
+      isOpen: true,
+      title: "Add Group"
+    });
+  };
 
+  formsave = value => {
     if (this.state.title === "Add people") {
       this.props.addAuthor(value, this.state.index);
+    } else {
+      this.props.addGroup(value);
     }
 
     this.setState({
@@ -74,6 +87,7 @@ class List extends React.Component {
 
   render() {
     const { messages } = this.props;
+
     const mess = messages.find(el => el.property_id === this.state.index);
     const currentMessages = mess.message;
     const currentMembers = mess.members;
@@ -82,7 +96,6 @@ class List extends React.Component {
       <div>
         {this.state.isOpen ? (
           <FormDialog
-            isOpen={this.state.isOpen}
             title={this.state.title}
             handleClose={this.formClose}
             handlesave={this.formsave}
@@ -94,7 +107,10 @@ class List extends React.Component {
         <div class="container">
           <div class="row no-gutters">
             <div class="col-md-4 border-right">
-              <button class="btn btn-primary ">
+              <button
+                class="btn btn-primary "
+                onClick={this.handleGroup.bind(this)}
+              >
                 <GroupAddIcon />
                 Create Group
               </button>
@@ -106,14 +122,29 @@ class List extends React.Component {
                 </div>
               </div>
               <div class="text">
-                {messages.map((el, i) => (
-                  <h6
-                    className="friend-drawer friend-drawer--onhover"
-                    onClick={e => this.handleClick(el.property_id)}
-                  >
-                    Property ID:{el.property_id}
-                  </h6>
-                ))}
+                {messages != null
+                  ? messages.map((el, i) =>
+                      this.state.index === el.property_id ? (
+                        <h6
+                          key={i}
+                          className="friend-drawer friend-drawer--onhover"
+                          style={{ background: "#00C6FF" }}
+                          onClick={e => this.handleClick(el.property_id)}
+                        >
+                          {el.property_id}
+                        </h6>
+                      ) : (
+                        <h6
+                          key={i}
+                          className="friend-drawer friend-drawer--onhover"
+                          onClick={e => this.handleClick(el.property_id)}
+                        >
+                          {el.property_id}
+                        </h6>
+                      )
+                    )
+                  : ""}
+
                 <hr />
               </div>
             </div>
@@ -122,7 +153,7 @@ class List extends React.Component {
               <div class="settings-tray">
                 <div class="friend-drawer no-gutters friend-drawer--grey">
                   <span class="settings-tray--right">
-                    <i>Message Box</i>
+                    <i>{this.state.index}</i>
                     <i>
                       <GroupAddOutlinedIcon
                         fontSize="large"
@@ -138,16 +169,32 @@ class List extends React.Component {
                   <div class="col-md-8 ">
                     <ul className="list-group py-2">
                       <h3>Users</h3>
-                      {currentMembers.map(item => (
-                        <div
-                          className="chat-bubble  chat-bubble--left"
-                          onClick={e => {
-                            this.userChat(item);
-                          }}
-                        >
-                          {item}
-                        </div>
-                      ))}
+                      {currentMembers != null
+                        ? currentMembers.map((item, i) =>
+                            this.state.user === item ? (
+                              <div
+                                key={i}
+                                className="chat-bubble  chat-bubble--left"
+                                style={{ background: "#00C6FF" }}
+                                onClick={e => {
+                                  this.userChat(item);
+                                }}
+                              >
+                                {item}
+                              </div>
+                            ) : (
+                              <div
+                                key={i}
+                                className="chat-bubble  chat-bubble--left"
+                                onClick={e => {
+                                  this.userChat(item);
+                                }}
+                              >
+                                {item}
+                              </div>
+                            )
+                          )
+                        : ""}
                     </ul>
                   </div>
                 </div>
@@ -156,14 +203,16 @@ class List extends React.Component {
                   <div class="col-md-8 offset-md-9">
                     <ul className="list-group py-2">
                       <h3>Messages</h3>
-                      {currentMessages.map((im, index) => (
-                        <div
-                          className="chat-bubble chat-bubble--right"
-                          key={index}
-                        >
-                          {im.author}: {im.message}
-                        </div>
-                      ))}
+                      {currentMessages != null
+                        ? currentMessages.map((im, index) => (
+                            <div
+                              className="chat-bubble chat-bubble--right"
+                              key={index}
+                            >
+                              {im.author}: {im.message}
+                            </div>
+                          ))
+                        : ""}
                     </ul>
                   </div>
                 </div>
@@ -207,6 +256,10 @@ const mapDispatchToProps = dispatch => {
     },
     addMessage: newMessage => {
       dispatch(addMessage(newMessage));
+    },
+
+    addGroup: newGroup => {
+      dispatch(addGroup(newGroup));
     }
   };
 };

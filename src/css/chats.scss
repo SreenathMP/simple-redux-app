@@ -93,7 +93,6 @@ input {
 
 .friend-drawer {
   padding: 25px 2px;
-  display: flex;
   vertical-align: baseline;
   background: #fff;
   transition: .3s ease;
@@ -110,12 +109,17 @@ input {
    }
 
   .text {
+    display: flex;
     margin-left: 12px;
     width: 70%;
+    
+    
 
     h6 {
       margin-top: 6px;
       margin-bottom: 0;
+      text-align: center;
+      
     }
 
     p {

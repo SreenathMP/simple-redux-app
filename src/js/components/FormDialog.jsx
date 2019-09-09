@@ -5,15 +5,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function FormDialog(props) {
-  const [open, setOpen] = useState("");
+function FormDialog(props) {
+  const [open, setOpen] = useState(true);
   const [text, setText] = useState("");
-
-  useEffect(() => {
-    setOpen(props.isOpen);
-  }, [props]);
 
   function handleClose() {
     setOpen(false);
@@ -61,3 +57,5 @@ export default function FormDialog(props) {
     </div>
   );
 }
+
+export default FormDialog;

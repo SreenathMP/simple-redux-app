@@ -3,14 +3,9 @@ import { ADD_MESSAGE, ADD_AUTHOR, ADD_GROUP } from "../constants/action-type";
 const initialState = {
   messages: [
     {
-      property_id: 12,
-      members: ["User 1", "User 2"],
-      message: [
-        {
-          message: " Hello",
-          author: "User 1"
-        }
-      ]
+      property_id: "rubus",
+      members: [],
+      message: []
     }
   ]
 };
@@ -40,13 +35,10 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === ADD_GROUP) {
-    var group = action.payload.group;
-    var newstate2 = { ...state };
-
-    newstate2.messages = [{ property_id: group }];
+    var newGroup = [{ property_id: action.payload, members: [], message: [] }];
 
     return Object.assign({}, state, {
-      messages: [...newstate2.messages]
+      messages: state.messages.concat(newGroup)
     });
   }
 
