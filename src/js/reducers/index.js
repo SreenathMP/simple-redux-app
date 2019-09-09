@@ -1,133 +1,18 @@
-import { ADD_MESSAGE, ADD_AUTHOR } from "../constants/action-type";
-
+import { ADD_MESSAGE, ADD_AUTHOR, ADD_GROUP } from "../constants/action-type";
 
 const initialState = {
-  messages:[{
-    property_id: 12,
-    members: [
-      "User 1",
-      "User 2"
-    ],
-    message: [{
-        message: " Hello",
-        author: "User 1"
-      },
-      {
-        message: " What?",
-        author: "User 2"
-      },
-      {
-        message: " Not now",
-        author: "User 1"
-      },
-    ]
-  },
-  {
-    property_id: 30,
-    members: [
-      "User 11",
-      "User 22"
-    ],
-    message: [{
-        message: "Was Gehts",
-        author: "User 11"
-      },
-
-      {
-        message: " Bis Gleich",
-        author: "User 22"
-      },
-      {
-        message: "Machen",
-        author: "User 11"
-      },
-    ]
-  },
-  {
-    property_id: 58,
-    members: [
-      "User 102",
-      "User 96"
-    ],
-    message: [{
-        message: "Roger",
-        author: "User 96"
-      },
-
-      {
-        message: " Bis Spater",
-        author: "User 102"
-      },
-      {
-        message: "Gluckwunsch",
-        author: "User 96"
-      },
-    ]
-  },
-  {
-    property_id: 39,
-    members: [
-      "User 400",
-      "User 500"
-    ],
-    message: [{
-        message: "Bis Morgen",
-        author: "User 400"
-      },
-
-      {
-        message: " Kebab",
-        author: "User 500"
-      },
-      {
-        message: "Machen",
-        author: "User 400"
-      },
-    ]
-  },
-  {
-    property_id: 20,
-    members: [
-      "User 360",
-      "User 120"
-    ],
-    message: [{
-        message: "Pokemon",
-        author: "User 360"
-      },
-
-      {
-        message: "Avengers",
-        author: "User 120"
-      },
-      {
-        message: "Logan",
-        author: "User 360"
-      },
-    ]
-  },
-  {
-    property_id: 100,
-    members: [
-      "User 1500",
-      "User 2000"
-    ],
-    message: [{
-        message: "Life is Beautiful",
-        author: "User 1500"
-      },
-
-      {
-        message: "Schindlers List",
-        author: "User 2000"
-      },
-      {
-        message: "Endgame",
-        author: "User 1500"
-      },
-    ]
-  },
-]
+  messages: [
+    {
+      property_id: 12,
+      members: ["User 1", "User 2"],
+      message: [
+        {
+          message: " Hello",
+          author: "User 1"
+        }
+      ]
+    }
+  ]
 };
 
 function rootReducer(state = initialState, action) {
@@ -151,6 +36,17 @@ function rootReducer(state = initialState, action) {
     ];
     return Object.assign({}, state, {
       messages: [...newstate.messages]
+    });
+  }
+
+  if (action.type === ADD_GROUP) {
+    var group = action.payload.group;
+    var newstate2 = { ...state };
+
+    newstate2.messages = [{ property_id: group }];
+
+    return Object.assign({}, state, {
+      messages: [...newstate2.messages]
     });
   }
 

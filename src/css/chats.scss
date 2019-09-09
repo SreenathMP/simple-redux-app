@@ -166,10 +166,16 @@ hr {
   &--left {
      &:after {
       left: 0;
-      border-right-color: #eee;
 	    border-left: 0;
       margin-left: -20px;
     }
+    
+  }
+
+  &--left:hover{
+    background: $blue;
+    border-right-color:$blue;
+    cursor: pointer;
   }
 
   &--right {

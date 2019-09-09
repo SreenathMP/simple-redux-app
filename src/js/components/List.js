@@ -19,6 +19,10 @@ class List extends React.Component {
     };
   }
 
+  chatbutton = {
+    background: "blue"
+  };
+
   handleClick(index) {
     this.setState({ index: index });
   }
@@ -137,7 +141,9 @@ class List extends React.Component {
                       {currentMembers.map(item => (
                         <div
                           className="chat-bubble  chat-bubble--left"
-                          onClick={e => this.userChat(item)}
+                          onClick={e => {
+                            this.userChat(item);
+                          }}
                         >
                           {item}
                         </div>

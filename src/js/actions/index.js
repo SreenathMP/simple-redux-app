@@ -1,10 +1,8 @@
-
-import { ADD_MESSAGE, ADD_AUTHOR } from "../constants/action-type";
-
+import { ADD_MESSAGE, ADD_AUTHOR, ADD_GROUP } from "../constants/action-type";
 
 export function addMessage(payload) {
-  return {type: ADD_MESSAGE, payload}
-};
+  return { type: ADD_MESSAGE, payload };
+}
 
 export function addAuthor(userName, id) {
   return {
@@ -14,4 +12,8 @@ export function addAuthor(userName, id) {
       id: id
     }
   };
+}
+
+export function addGroup(payload) {
+  return { type: ADD_GROUP, payload };
 }
